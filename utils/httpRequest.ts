@@ -1,21 +1,25 @@
 import { Endpoint } from "./Endpoint";
 import { accessToken } from "./accessToken";
 
-export const baseUrl = "http://192.168.13.101:30100/api";
+export const base = "http://192.168.13.101:30100";
 
-type RequestParams = {
+type RequestBodyParams = {
   [key: string]: string;
 };
 
-export const createRequestBody = (params?: RequestParams) => {
+export const createRequest = (bodyParams?: RequestBodyParams) => {
   return {
     method: "POST",
-    header: "Content-Type: application/json",
-    i: accessToken,
-    ...params,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ...bodyParams,
+      i: accessToken,
+    }),
   };
 };
 
 export const getUrl = (endpoint: Endpoint) => {
-  return new URL(endpoint, baseUrl);
+  return new URL("api/" + endpoint, base);
 };
