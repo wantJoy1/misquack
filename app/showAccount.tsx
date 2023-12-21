@@ -4,8 +4,7 @@ import { useState } from "react";
 import { base, createRequest, getUrl } from "../utils/httpRequest";
 
 export default function ShowAccount() {
-  // const endpoint = getUrl("i");
-  const endpoint = "http://192.168.13.101:30100/i";
+  const endpoint = getUrl("i");
   const params = createRequest();
 
   const [account, setAccount] = useState("");
