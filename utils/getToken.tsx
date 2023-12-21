@@ -33,37 +33,3 @@ type Permission =
   | "read:page-likes"
   | "write:gallery-likes"
   | "read:gallery-likes";
-
-const joinedPermission = (permission: Permission[]) => {
-  return permission.join(",");
-};
-
-const getSession = async () => {
-  const baseUrl = "http://192.168.13.101:30100";
-  const uuid = uuidv4();
-  const queryParams: QueryParams = {
-    name: "Misquack",
-    permission: ["write:notes", "read:account"],
-  };
-
-  const authenticationUrl = `https://${baseUrl}/miauth/${uuid}`;
-  return (
-    await fetch(`http://192.168.13.101:30100/api/miauth/${uuid}/check`, {
-      method: "POST",
-    })
-  ).json();
-};
-
-/*
-  # こんな面倒くさいことやらずに、ブラウザから直接アクセストークンを取得したほうがよい
-
-  # UUIDは使い回さないことが前提
-  # 確認も一度しかできない
-  # 一度アクセストークンを閲覧するための
-  # URL(http://{server}/miauth/{uuid}/check
-  # にアクセスした後、同じUUIDでアクセスするとエラーになる
-
-  node
-  .load 'utils/get_token.js'
-  res()
-*/
