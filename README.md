@@ -10,13 +10,15 @@ misquack, a frontend for Misskey
 
 ## Before use
 
-`touch utils/accessToken.ts`
+```ts
+# accessToken.ts
+export const accessToken = 'yourAccessToken'
+```
 
-Edit the file as below
-
-`export const accessToken = 'yourAccessToken'`
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```ts
+# httpRequest.ts
+export const base = 'https://using-misskey-url'
+```
 
 ## Getting Started
 
